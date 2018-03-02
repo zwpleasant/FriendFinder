@@ -12,7 +12,7 @@
 <body>
 
   <div class="container">
-    <div class="jumbotron">
+    <div class="jumbotron text-center">
       <h1>FriendFinder Survey</h1>
       <h3>Fill out the questions below to find your best match!</h3>
     </div>
@@ -38,7 +38,7 @@
               </div>
 
               <div class="form-group">
-                <label for="age">Question 1</label>
+                <label>Question 1</label>
                     <select class="form-control" id="q1">
                         <option value="1">1 (Strongly Disagree)</option>
                         <option value="2">2</option>
@@ -49,7 +49,7 @@
               </div>
 
               <div class="form-group">
-                <label for="age">Question 2</label>
+                <label>Question 2</label>
                     <select class="form-control" id="q2">
                         <option value="1">1 (Strongly Disagree)</option>
                         <option value="2">2</option>
@@ -60,7 +60,7 @@
               </div>
 
               <div class="form-group">
-                <label for="age">Question 3</label>
+                <label>Question 3</label>
                     <select class="form-control" id="q3">
                         <option value="1">1 (Strongly Disagree)</option>
                         <option value="2">2</option>
@@ -71,7 +71,7 @@
               </div>
 
               <div class="form-group">
-                <label for="age">Question 4</label>
+                <label>Question 4</label>
                     <select class="form-control" id="q4">
                         <option value="1">1 (Strongly Disagree)</option>
                         <option value="2">2</option>
@@ -82,7 +82,7 @@
               </div>
 
               <div class="form-group">
-                <label for="age">Question 5</label>
+                <label>Question 5</label>
                     <select class="form-control" id="q5">
                         <option value="1">1 (Strongly Disagree)</option>
                         <option value="2">2</option>
@@ -93,7 +93,7 @@
               </div>
 
               <div class="form-group">
-                <label for="age">Question 6</label>
+                <label>Question 6</label>
                     <select class="form-control" id="q6">
                         <option value="1">1 (Strongly Disagree)</option>
                         <option value="2">2</option>
@@ -104,7 +104,7 @@
               </div>
 
               <div class="form-group">
-                <label for="age">Question 7</label>
+                <label>Question 7</label>
                     <select class="form-control" id="q7">
                         <option value="1">1 (Strongly Disagree)</option>
                         <option value="2">2</option>
@@ -115,7 +115,7 @@
               </div>
 
               <div class="form-group">
-                <label for="age">Question 8</label>
+                <label>Question 8</label>
                     <select class="form-control" id="q8">
                         <option value="1">1 (Strongly Disagree)</option>
                         <option value="2">2</option>
@@ -126,7 +126,7 @@
               </div>
 
               <div class="form-group">
-                <label for="age">Question 9</label>
+                <label>Question 9</label>
                     <select class="form-control" id="q9">
                         <option value="1">1 (Strongly Disagree)</option>
                         <option value="2">2</option>
@@ -137,7 +137,7 @@
               </div>
 
               <div class="form-group">
-                <label for="age">Question 10</label>
+                <label>Question 10</label>
                     <select class="form-control" id="q10">
                         <option value="1">1 (Strongly Disagree)</option>
                         <option value="2">2</option>
@@ -159,25 +159,33 @@
     </div>
   </div>
 
-  <!-- <script type="text/javascript">
-    // Question: What does this code do?
-    $("#add-btn").on("click", function(event) {
-      event.preventDefault();
-      var newCharacter = {
-        name: $("#name").val().trim(),
-        role: $("#role").val().trim(),
-        age: $("#age").val().trim(),
-        forcePoints: $("#force-points").val().trim()
-      };
+  <script type="text/javascript">
 
-      // Question: What does this code do??
-      $.post("/api/new", newCharacter)
-      .then(function(data) {
-        console.log(data);
-        alert("Adding character...");
-      });
+    $(document).ready(function() {
+        $("#submit").on("click", function() {
+            event.preventDefault();
+            var friendArray = [
+                {
+                    "name":$("#name").val(),
+                    "photo":$("#picture").val(),
+                    "scores":[
+                        $("#q1").val().trim(),
+                        $("#q2").val().trim(),
+                        $("#q3").val().trim(),
+                        $("#q4").val().trim(),
+                        $("#q5").val().trim(),
+                        $("#q6").val().trim(),
+                        $("#q7").val().trim(),
+                        $("#q8").val().trim(),
+                        $("#q9").val().trim(),
+                        $("#q10").val().trim()
+                    ]
+                }
+            ];
+        });
     });
-  </script> -->
+
+  </script>
 
 </body>
 </html>
