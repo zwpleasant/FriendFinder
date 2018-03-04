@@ -159,11 +159,15 @@
         </div>
     </div>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <p>Your best match is:</p>
-            <div class="modalName">User Match will go here</div>
-            <img class="modalPicture" src="" style = "width: 250px; height: 150px">
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -197,8 +201,13 @@
             // post the user's answers to the friendArray in JSON
             $.post("/api/friends", newFriend, function (data) {
                 console.log(data);
-                $(".modalName").html(data.match);
-                $(".modalPicture").attr('src', data.matchPic)
+                $(".modal-body").html(data);
+                $("#modal").modal();
+
+                // clear fields in survey
+                $('.survey').each(function () {
+                this.reset();
+                });
             });
         });
     });
