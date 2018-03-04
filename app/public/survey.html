@@ -197,7 +197,8 @@
             // post the user's answers to the friendArray in JSON
             $.post("/api/friends", newFriend, function (data) {
                 console.log(data);
-                // add best match information from js logic
+                $(".modalName").html(data.match);
+                $(".modalPicture").attr('src', data.matchPic)
             });
         });
     });
