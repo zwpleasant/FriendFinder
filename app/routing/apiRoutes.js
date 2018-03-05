@@ -1,4 +1,7 @@
-var friendsData = require("../data/friends");
+var friendsData = require("../data/friends.js");
+
+// declare global variable for a new user
+var newFriend
 
 module.exports = function(app) {
     app.get("/api/friends", function (req, res) {
@@ -7,10 +10,12 @@ module.exports = function(app) {
     
     app.post("/api/friends", function (req, res) {
         var newFriend = req.body
-        console.log(req.body)
-        // run through loops to parse JSON friend array and check scores with absolute values
-        // req.body is coming back in console, but is showing undefined in for loop..
+        // console.log(req.body)
         var findLowScore = [];
+        friendsData.push(newFriend);
+        res.send(JSON.stringify(friendsData));
+
+        // run through loops to parse JSON friend array and check scores with absolute values
         for (var i = 0; i < friendsData.length; i++) {
             var differences = []
             for (var j = 0; j < friendsData[i].scores.length; j++) {

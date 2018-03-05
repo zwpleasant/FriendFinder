@@ -29,12 +29,12 @@
 
                 <div class="form-group">
                     <label for="name">Name (required)</label>
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control name">
                 </div>
 
                 <div class="form-group">
-                    <label for="picture">Picture (required)</label>
-                    <input type="text" class="form-control" id="picture">
+                    <label>Picture (required)</label>
+                    <input type="text" class="form-control picture">
                 </div>
 
                 <div class="form-group">
@@ -179,35 +179,26 @@
             event.preventDefault();
             var newFriend = [
                 {
-                    "name":$("#name").val(),
-                    "photo":$("#picture").val(),
-                    "scores":[
-                        $("#q1").val().trim(),
-                        $("#q2").val().trim(),
-                        $("#q3").val().trim(),
-                        $("#q4").val().trim(),
-                        $("#q5").val().trim(),
-                        $("#q6").val().trim(),
-                        $("#q7").val().trim(),
-                        $("#q8").val().trim(),
-                        $("#q9").val().trim(),
-                        $("#q10").val().trim()
+                    "name": $(".name").val().trim(),
+                    "photo": $(".picture").val().trim(),
+                    "scores":[ 
+                        $("#q1").val(),
+                        $("#q2").val(),
+                        $("#q3").val(),
+                        $("#q4").val(),
+                        $("#q5").val(),
+                        $("#q6").val(),
+                        $("#q7").val(),
+                        $("#q8").val(),
+                        $("#q9").val(),
+                        $("#q10").val()
                     ]
                 }
             ];
-            // log the current answers
-            console.log(newFriend);
             
             // post the user's answers to the friendArray in JSON
             $.post("/api/friends", newFriend, function (data) {
-                console.log(data);
-                $(".modal-body").html(data);
-                $("#modal").modal();
-
-                // clear fields in survey
-                $('.survey').each(function () {
-                this.reset();
-                });
+                console.log(JSON.parse(data));
             });
         });
     });
